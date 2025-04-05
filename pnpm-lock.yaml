@@ -20,9 +20,15 @@ importers:
       ts-node:
         specifier: ^10.9.1
         version: 10.9.2(@types/node@18.19.86)(typescript@5.8.3)
+      tsx:
+        specifier: ^4.19.3
+        version: 4.19.3
       typescript:
         specifier: ^5.0.4
         version: 5.8.3
+      zeromq:
+        specifier: ^6.4.1
+        version: 6.4.1
     devDependencies:
       '@types/node':
         specifier: ^18.16.0
@@ -30,9 +36,6 @@ importers:
       tsup:
         specifier: 8.3.5
         version: 8.3.5(postcss@8.5.3)(tsx@4.19.3)(typescript@5.8.3)(yaml@2.7.1)
-      tsx:
-        specifier: ^4.19.3
-        version: 4.19.3
 
 packages:
 
@@ -1219,6 +1222,10 @@ packages:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
 
+  cmake-ts@0.6.0:
+    resolution: {integrity: sha512-2QlKs1Cc8yjCKxWx/HJw0rwvqkoPetC3CA64RIqQOikOyqtZo/dlRHp17Kpss24GrOSCr3PsQ9kAlXHgev3qqQ==}
+    hasBin: true
+
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -1730,6 +1737,10 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
+  node-addon-api@8.3.1:
+    resolution: {integrity: sha512-lytcDEdxKjGJPTLEfW4mYMigRezMlyJY8W4wxJK8zE533Jlb8L8dRuObJFWg2P+AuOIxoCgKF+2Oq4d4Zd0OUA==}
+    engines: {node: ^18 || ^20 || >= 21}
+
   node-domexception@1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
@@ -2211,6 +2222,10 @@ packages:
   yn@3.1.1:
     resolution: {integrity: sha512-Ux4ygGWsu2c7isFWe8Yu1YluJmqVhxqK2cLXNQA5AcC3QfbGNpM7fu0Y8b/z16pXLnFxZYvWhd3fhBY9DLmC6Q==}
     engines: {node: '>=6'}
+
+  zeromq@6.4.1:
+    resolution: {integrity: sha512-e9CHngR7wH7Cv7k1ASfYh/k8DurBD1Myx28EyAEiWKhqyhGy30lP3M6NBNN2gb6WmVqNq+KJGEJXO7vTvFW2bA==}
+    engines: {node: '>= 12'}
 
   zimmerframe@1.1.2:
     resolution: {integrity: sha512-rAbqEGa8ovJy4pyBxZM70hg4pE6gDgaQ0Sl9M3enG3I0d6H4XSAM3GeNGLKnsBpuijUow064sf7ww1nutC5/3w==}
@@ -3642,6 +3657,8 @@ snapshots:
 
   clsx@2.1.1: {}
 
+  cmake-ts@0.6.0: {}
+
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -4152,6 +4169,8 @@ snapshots:
 
   neo-async@2.6.2: {}
 
+  node-addon-api@8.3.1: {}
+
   node-domexception@1.0.0: {}
 
   node-fetch@2.7.0:
@@ -4640,6 +4659,11 @@ snapshots:
   yaml@2.7.1: {}
 
   yn@3.1.1: {}
+
+  zeromq@6.4.1:
+    dependencies:
+      cmake-ts: 0.6.0
+      node-addon-api: 8.3.1
 
   zimmerframe@1.1.2: {}
 

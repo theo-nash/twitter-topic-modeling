@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Topic modeling system for Twitter data",
   "main": "dist/index.js",
+  "type": "module",
   "scripts": {
     "build": "tsup --format esm --dts",
-    "start": "ts-node src/index.ts",
-    "setup-python": "ts-node src/setupPython.ts",
+    "start": "tsc && node --loader ts-node/esm src/index.ts",
+    "setup-python": "tsx src/setupPythonService.ts",
     "postinstall": "./setup.sh"
   },
   "keywords": [
@@ -22,11 +23,12 @@
     "dotenv": "^16.0.3",
     "python-shell": "^5.0.0",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.0.4",
+    "zeromq": "^6.4.1",
+    "tsx": "^4.19.3"
   },
   "devDependencies": {
     "@types/node": "^18.16.0",
-    "tsup": "8.3.5",
-    "tsx": "^4.19.3"
+    "tsup": "8.3.5"
   }
 }

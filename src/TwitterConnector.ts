@@ -1,6 +1,6 @@
 // src/TwitterConnector.ts
 import { elizaLogger } from "@elizaos/core";
-import { GuidedTopicManager } from "./GuidedTopicManager";
+import type { GuidedTopicManager } from "./GuidedTopicManager";
 
 // Example Twitter data structure
 export interface Tweet {

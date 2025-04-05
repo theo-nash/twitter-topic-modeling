@@ -1,9 +1,10 @@
-// src/index.ts
 import * as dotenv from 'dotenv';
 import * as path from 'path';
 import { elizaLogger, IAgentRuntime } from "@elizaos/core";
 import { GuidedTopicManager } from './GuidedTopicManager';
 import { TwitterConnector, Tweet } from './TwitterConnector';
+import { PythonServiceClient } from './PythonServiceClient';
+import { fileURLToPath } from 'url';
 
 // Load environment variables
 dotenv.config();
@@ -20,12 +21,30 @@ const mockRuntime = {
     }
 };
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 /**
  * Main application to demonstrate the topic modeling system
  */
 async function main() {
     try {
         console.log("Starting Twitter Topic Modeling System...");
+
+        // Create model directory
+        const modelDir = path.join(__dirname, '..', 'models');
+
+        // First, initialize the Python service client
+        const pythonClient = new PythonServiceClient(modelDir);
+
+        // Try to start Python service
+        try {
+            await pythonClient.start();
+            console.log("Python service started successfully");
+        } catch (error) {
+            console.error("Warning: Could not start Python service:", error);
+            console.log("Will continue with LLM-based fallback for topic extraction");
+        }
 
         // Initialize the topic manager with initial topics
         const initialTopics = [
@@ -40,9 +59,6 @@ async function main() {
             'cloud computing',
             'cybersecurity'
         ];
-
-        // Create model directory
-        const modelDir = path.join(__dirname, '..', 'models');
 
         // Initialize topic manager
         const topicManager = new GuidedTopicManager(mockRuntime as IAgentRuntime, initialTopics, modelDir);
@@ -142,6 +158,13 @@ async function main() {
         console.log(`Discovered topics: ${updatedTopics.join(', ')}`);
 
         console.log("\nTwitter Topic Modeling System demo completed.");
+
+        // Shutdown Python service
+        if (pythonClient) {
+            await pythonClient.stop();
+            console.log("Python service stopped");
+        }
+
     } catch (error) {
         console.error("Error in main:", error);
     }
