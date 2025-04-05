@@ -1,0 +1,7 @@
+bertopic==0.15.0
+sentence-transformers==2.2.2
+scikit-learn==1.2.2
+hdbscan==0.8.29
+umap-learn==0.5.3
+keybert==0.7.0
+spacy==3.5.3
